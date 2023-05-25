@@ -1,0 +1,78 @@
+
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5><a routerLink="/admin">Ana Ekran</a>-----Bilet Ekle</h5>
+        </div>
+       
+            <div class="card-body">
+                <div class="col-md-2 float-end " *ngIf="price"><button type="button" class="btn btn-secondary btn-sm" (click)="returnToHome()">Sefer seçimine
+                        geri dön</button>
+                </div>
+            
+                <div class="ms-5 mt-5" *ngIf="price">
+                    <app-select-seat [price]="price" [tripDto]="tripDto" [busTypeId]="busTypeId" [bookedSeats]="bookedSeats"></app-select-seat>
+                </div>
+            
+                <div class="" *ngIf="!price">
+                    <form class="" [formGroup]="ticketAddForm">
+                        <div class=" col-md-8 alert">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="routeId">Rota Seçiniz </label>
+                                    <select class="form-control" id="routeId" formControlName="routeId">
+                                        <option *ngFor="let routeDto of routeDtos" value={{routeDto.id}}>
+                                            {{routeDto.startTownName+'--'+routeDto.finishTownName}}</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="date">Tarih</label>
+                                    <input type="date" id="date" formControlName="date" class="form-control w-50 "
+                                        placeholder="tarih" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-auto ">
+            
+                                    <button class="btn btn-fill  btn-primary" (click)="getTrips()">Seferleri Getir</button>
+                                </div>
+                            </div>
+                            <div class="" *ngIf="tripDtos">
+                                <table class="table table-striped ">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Başlangıç</th>
+                                            <th>Varış</th>
+                                            <th>Koltuk Sayısı</th>
+                                            <th>Saat</th>
+                                            <th>Fiyat</th>
+                                            <th></th>
+            
+            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let tripDto of tripDtos;let i = index" [attr.data-index]="i">
+                                            <td>{{i+1}}</td>
+                                            <td>{{ tripDto.startTownName }}</td>
+                                            <td>{{ tripDto.finishTownName }}</td>
+                                            <td>{{ tripDto.numberOfSeats }}</td>
+                                            <td>{{ tripDto.hour }}</td>
+                                            <td>{{ tripDto.price }}</td>
+                                            <td><button type="button" class="btn   btn-success"
+                                                    (click)="selectTrip(tripDto)">Seç</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+            
+            
+                            </div>
+            
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>

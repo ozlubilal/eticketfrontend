@@ -1,0 +1,41 @@
+<div class="row mt-5">
+    <div class="col-auto">
+      <!-- {{tripDto.startTownName+'---'+tripDto.finishTownName+' ------------'+tripDto.date+'---'+tripDto.hour}} -->
+    </div>
+    </div>
+    <!-- koltuk seçim alanı -->
+    <div  class="derf border border-secondary">
+    <div class="row" >
+      <div class="col-auto p-2" *ngFor="let n of numSequence(0,48)">
+        <ol class="seats">          
+          <li class="seat" >
+            <input type="checkbox" [(ngModel)]="seats[n+3].isChecked" id="{{seats[n+3].id}}"
+              disabled="{{seats[n+3].disabled}}" value="{{seats[n+3].number}}" required="" (change)="changeSelection()">
+            <label for="{{seats[n+3].id}}">
+              {{seats[n+3].number}} </label>
+          </li>
+          <li class="seat" >
+            <input type="checkbox" [(ngModel)]="seats[n+2].isChecked" id="{{seats[n+2].id}}"
+              disabled="{{seats[n+2].disabled}}" value="{{seats[n+2].number}}" required="" (change)="changeSelection()">
+            <label for="{{seats[n+2].id}}">
+              {{seats[n+2].number}} </label>
+          </li>
+          <li class="seat  mt-4" >
+            <input type="checkbox" [(ngModel)]="seats[n+1].isChecked" id="{{seats[n+1].id}}"
+              disabled="{{seats[n+1].disabled}}" value="{{seats[n+1].number}}" required="" (change)="changeSelection()">
+            <label for="{{seats[n+1].id}}">
+              {{seats[n+1].number}} </label>
+          </li>
+          <li class="seat" >
+            <input type="checkbox" [(ngModel)]="seats[n].isChecked" id="{{seats[n].id}}"
+              disabled="{{seats[n].disabled}}" value="{{seats[n].number}}" required="" (change)="changeSelection()">
+            <label for="{{seats[n].id}}">
+              {{seats[n].number}} </label>
+          </li>
+        </ol>
+      </div>
+      
+    </div>
+  </div>
+
+         

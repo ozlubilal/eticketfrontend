@@ -1,0 +1,104 @@
+
+<!-- koltuk seçim alanı -->
+<div class="row mt-4">
+<div  class="selectSeat border border-secondary col-auto" *ngIf="seatsAreSelected==false">
+  <div class="row" >
+    <div class="col-auto p-2" *ngFor="let n of numSequence(0,48)">
+      <ol class="seats">          
+        <li class="seat" >
+          <input type="checkbox" [(ngModel)]="seats[n+3].isChecked" id="{{seats[n+3].id}}"
+            disabled="{{seats[n+3].disabled}}" value="{{seats[n+3].number}}" required="" (change)="changeSelection()">
+          <label for="{{seats[n+3].id}}">
+            {{seats[n+3].number}} </label>
+        </li>
+        <li class="seat" >
+          <input type="checkbox" [(ngModel)]="seats[n+2].isChecked" id="{{seats[n+2].id}}"
+            disabled="{{seats[n+2].disabled}}" value="{{seats[n+2].number}}" required="" (change)="changeSelection()">
+          <label for="{{seats[n+2].id}}">
+            {{seats[n+2].number}} </label>
+        </li>
+        <li class="seat  mt-4" >
+          <input type="checkbox" [(ngModel)]="seats[n+1].isChecked" id="{{seats[n+1].id}}"
+            disabled="{{seats[n+1].disabled}}" value="{{seats[n+1].number}}" required="" (change)="changeSelection()">
+          <label for="{{seats[n+1].id}}">
+            {{seats[n+1].number}} </label>
+        </li>
+        <li class="seat" >
+          <input type="checkbox" [(ngModel)]="seats[n].isChecked" id="{{seats[n].id}}"
+            disabled="{{seats[n].disabled}}" value="{{seats[n].number}}" required="" (change)="changeSelection()">
+          <label for="{{seats[n].id}}">
+            {{seats[n].number}} </label>
+        </li>
+      </ol>
+    </div>    
+  </div>
+</div>
+<div class="col-auto ms-3" *ngIf="selectedItemsList.length!==0 && seatsAreSelected==false">
+  <div class="row ">
+    <div class="col-md-2" *ngFor="let item of selectedItemsList">
+      <span class="badge bg-warning">{{item.number}}</span>
+    </div>
+  </div>
+  <h5>Bilet Tutarı</h5>
+  <h5>{{selectedItemsList.length*price}} TL</h5>
+  <button type="button" class="btn btn-success " (click)="next()">İleri</button>
+</div>
+</div>
+   <!-- bilet bilgieri  -->
+  <div [formGroup]="ticketAddForm" *ngIf="seatsAreSelected==true">
+    <ng-container formArrayName="tickets">
+      <ng-container  *ngFor="let ticket of tickets.controls;let index = index">
+      <div class=" mt-3" [formGroupName]="index" >
+        <div class="row">
+          <div class="col">
+            <span class="badge bg-warning align-middle">
+              <h5>{{selectedItemsList[index].number}}</h5>
+            </span>
+          </div>
+          <div class="col">
+            <select class="form-control" formControlName="genderName">
+              <option>Cinsiyet</option>
+              <option *ngFor="let gender of genders">{{gender.genderName}}</option>
+            </select>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" formControlName="identityNumber" placeholder="Tc Kimlik No"
+              aria-label="Tc Kimlik No">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" formControlName="firstName" placeholder="Yolcu Adı"
+              aria-label="First name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" formControlName="lastName" placeholder="Yolcu Soyadı"
+              aria-label="Last name">
+          </div>
+          <div class="col">
+            <h3>{{price}}</h3>
+          </div>
+        </div>      
+      </div>   
+    </ng-container> 
+     </ng-container>
+     
+      <div class="row mb-3 mt-5">
+        <div class="col-auto ">
+          <label for="hour">Telefon Numarası</label>
+          <div class="form-group"><input type="text" class="form-control" formControlName="phoneNumber"
+              placeholder="Telefon Numarası">
+          </div>
+        </div>
+        <div class="col-auto ">
+          <label for="hour">Email</label>
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="email" placeholder="Email">       
+          </div>
+        </div>
+      </div>
+      
+        <div class="col-md-2 float-end w-50 p-3">
+     <button class="btn btn-primary" (click)="send()">Gönder</button>
+     </div>
+      
+  </div>
+  

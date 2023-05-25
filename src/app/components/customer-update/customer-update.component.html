@@ -1,0 +1,66 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5><a routerLink="/admin">Ana Ekran</a>-----Müşteri Güncelle</h5>
+        </div>
+        <div class="card-body">
+            <form class="" [formGroup]="customerUpdateForm" *ngIf="customerDto">
+                <div class=" col-md-8 alert">
+                    
+                        <div class="row mb-3">
+                            <div class="col-auto ">
+                                <label for="identityNumber">Tc Kimlik No</label>
+                                <div class="form-group"><input type="text" id="identityNumber"
+                                        formControlName="identityNumber" class="form-control"
+                                        placeholder="Tc Kimlik No" />
+                                </div>
+                            </div>
+                            <div class="col-auto ">
+                                <label for="userName">Email</label>
+                                <div class="form-group"><input type="text" id="email" formControlName="email"
+                                        class="form-control" placeholder="Email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-auto ">
+                                <label for="firstName">Adı</label>
+                                <div class="form-group"><input type="text" id="firstName" formControlName="firstName"
+                                        class="form-control" placeholder="Adı" />
+                                </div>
+                            </div>
+                             <div class="col-auto ">
+                                <label for="lastName">Soyadı</label>
+                                <div class="form-group"><input type="text" id="lastName" formControlName="lastName"
+                                        class="form-control" placeholder="Soyadı" />
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="row mb-3">                            
+                            <div class="col-auto ">
+                                <label for="phoneNumber">Telefon Numarası</label>
+                                <div class="form-group"><input type="text" id="phoneNumber"
+                                        formControlName="phoneNumber" class="form-control"
+                                        placeholder="Telefon Numarası" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">                            
+                            <div class="col-auto">
+                                <label for="genderName">Cinsiyet</label>
+                                <select class="form-control" id="genderName" formControlName="genderName"
+                                    style="width:120px;">
+                                    <option>Cinsiyet</option>
+                                    <option *ngFor="let gender of genders">{{gender.genderName}}</option>
+                                </select>
+                            </div>
+                        </div>                       
+                    
+                    <div class="mx-auto pb-auto" style="width:100px;">
+                        <button class="btn btn-fill  btn-primary" (click)="update()">Güncelle"  </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="content">
+    <div class="col-md-12 mx-auto">    
+      <div class="card ">
+        <div class="card-header"><h5><a routerLink="/admin">Ana Ekran</a>-----Otobüs Türleri</h5></div>
+          <div class="listCenter">
+           
+              <table class="table table-striped " *ngIf="dataLoaded==true">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Otobüs</th>                    
+                      <th>Koltuk Sayısı</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let busType of busTypes;let i = index" [attr.data-index]="i">
+                      <td>{{i+1}}</td>
+                      <td>{{ busType.busTypeName }}</td>
+                      <td>{{ busType.numberOfSeats }}</td>
+                      <td> <button type="button" class="btn btn-success" routerLink="/bustypes/update/{{busType.id}}" >Güncelle</button></td>
+                          <td><button type="button" class="btn btn-danger" (click)="delete(busType)">Sil</button></td>
+                    </tr>
+                  </tbody>
+        
+                </table>
+    
+  
+              </div>
+          </div>
+      </div>
+  </div>

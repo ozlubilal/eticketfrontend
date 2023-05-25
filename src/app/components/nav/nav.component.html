@@ -1,0 +1,59 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       
+       
+        <!-- Left links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active  text-light" aria-current="page" routerLink="">Home</a>
+            </li>
+            <li>              
+              <a class="nav-link active  text-light" aria-current="page" routerLink="admin" *ngIf="claimName=='admin'">Yönetici Paneli</a>
+            </li> 
+          </ul>
+        <!-- Left links -->
+      </div>
+      <!-- Collapsible wrapper -->
+  
+      <!-- Right elements -->
+      <div class="d-flex align-items-center">
+       
+       
+  
+        <!-- Notifications -->
+        <div class="dropdown mx-5"  *ngIf="!isAuthenticated()">
+        
+      
+            <a class="nav-link dropdown-toggle text-light " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hesabım
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/loginRegister/login">Giriş Yap</a></li>
+              <li><a class="dropdown-item" routerLink="/loginRegister/register">Üye Ol</a></li>
+            </ul>
+            
+         
+        </div>
+        <div class="dropdown mx-5"  *ngIf="isAuthenticated()&&userDetail" style="color: white;">
+        
+      
+          <a class="nav-link dropdown-toggle text-light " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{userDetail.firstName+" "+userDetail.lastName}}
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li><a class="dropdown-item" routerLink="/loginRegister/login" (click)="logOut()">Çıkış Yap</a></li>
+          </ul>                
+      </div>
+      </div>
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->

@@ -1,0 +1,33 @@
+<div class="content">
+    <div class="col-md-12 mx-auto">    
+      <div class="card ">
+        <div class="card-header"><h5><a routerLink="/admin">Ana Ekran</a>-----İlçe Listesi</h5></div>
+          <div class="listCenter">
+           
+              <table class="table table-striped " *ngIf="dataLoaded==true">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Şehir</th>                    
+                      <th>İlçe</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let townDto of townDtos;let i = index" [attr.data-index]="i">
+                      <td>{{i+1}}</td>
+                      <td>{{ townDto.cityName }}</td>
+                      <td>{{ townDto.townName }}</td>
+                      <td><button type="button" class="btn btn-success" routerLink="/town/update/{{townDto.id}}" >Güncelle</button></td>
+                          <td><button type="button" class="btn btn-danger" (click)="delete(townDto.id)">Sil</button></td>
+                    </tr>
+                  </tbody>
+        
+                </table>
+    
+  
+              </div>
+          </div>
+      </div>
+  </div>

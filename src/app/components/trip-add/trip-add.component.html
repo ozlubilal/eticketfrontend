@@ -1,0 +1,57 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5><a routerLink="/admin">Ana Ekran</a>-----Sefer Ekle</h5>
+        </div>
+        <div class="card-body">
+            <form class="" [formGroup]="tripAddForm">
+                <div class=" col-md-8 alert">
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="routeId">Rota</label>
+                            <select class="form-control" id="routeId" formControlName="routeId" style="width:120px;">
+                                <option *ngFor="let routeDto of routeDtos" value={{routeDto.id}}>{{routeDto.startTownName+'--'+routeDto.finishTownName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="busTypeName">Otobüs Türü</label>                           
+                            <select class="form-control" id="busTypeName" formControlName="busTypeName" style="width:120px;">
+                                <option>Otobüs Türü Seçiniz</option>
+                                <option *ngFor="let busType of busTypes">{{busType.busTypeName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="date">Tarih</label>
+                            <div class="form-group"><input type="date" id="date" formControlName="date" class="form-control"
+                                    placeholder="Mesafe" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="hour">Saat</label>
+                            <div class="form-group"><input type="text" id="hour" formControlName="hour" class="form-control"
+                                    placeholder="Saat" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="price">Fiyat</label>
+                            <div class="form-group"><input type="text" id="price" formControlName="price" class="form-control"
+                                    placeholder="Fiyat" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mx-auto pb-auto" style="width:100px;">
+                        <button class="btn btn-fill  btn-primary" (click)="add()">Ekle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

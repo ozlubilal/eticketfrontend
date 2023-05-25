@@ -1,0 +1,56 @@
+
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5><a routerLink="/admin">Ana Ekran</a>-----Kullanıcı Ekle</h5>
+        </div>
+        <div class="card-body">
+            <form class="" [formGroup]="userAddForm">
+                <div class=" col-md-8 alert">
+                   
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="userName">Ad</label>
+                            <div class="form-group"><input type="text" id="firstName" formControlName="firstName" class="form-control"
+                                    placeholder="Adı" />
+                            </div>
+                        </div>
+                        <div class="col-auto ">
+                            <label for="userName">Soyad</label>
+                            <div class="form-group"><input type="text" id="lastName" formControlName="lastName" class="form-control"
+                                    placeholder="Soyadı" />
+                            </div>
+                        </div>
+                    </div>   
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="mail">Mail</label>
+                            <div class="form-group"><input type="text" id="email" formControlName="email" class="form-control"
+                                    placeholder="Mail" />
+                            </div>
+                        </div>
+                        <div class="col-auto ">
+                            <label for="password">Şifre</label>
+                            <div class="form-group"><input type="password" id="password" formControlName="password" class="form-control"
+                                    placeholder="Şifre" />
+                            </div>
+                        </div>
+                    </div>
+                                               
+                    <div class="row mb-3">                       
+                        <div class="col-auto">
+                            <select class="form-control" id="operationClaimName"  formControlName="operationClaimName" style="width:120px;">
+                                <option class="dropdown-item" selected value="undefined">Kullanıcı Rolü</option>
+                                <option *ngFor="let operationClaim of operationClaims">{{operationClaim.name}}</option>
+                            </select>
+                        </div>
+                    </div>                 
+                                      
+                    <div class="mx-auto pb-auto" style="width:100px;">
+                        <button class="btn btn-fill  btn-primary" (click)="add()">Ekle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

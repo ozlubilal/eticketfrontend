@@ -1,0 +1,42 @@
+<div class="content">
+  <div class="col-md-12 mx-auto">    
+    <div class="card ">
+      <div class="card-header"><h5><a routerLink="/admin">Ana Ekran</a>-----Müşteri Listesi</h5></div>
+        <div class="listCenter">
+         
+            <table class="table table-striped " *ngIf="dataLoaded==true">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Tc No</th>
+                    <th>Email</th>  
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Cinsiyet</th> 
+                    <th>Telefon No</th>                    
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let customerDto of customerDtos;let i = index" [attr.data-index]="i">
+                    <td>{{i+1}}</td>
+                    <td>{{ customerDto.identityNumber }}</td>
+                    <td>{{ customerDto.email }}</td>
+                    <td>{{ customerDto.firstName }}</td>
+                    <td>{{ customerDto.lastName }}</td>
+                    <td>{{ customerDto.genderName }}</td>
+                    <td>{{ customerDto.phoneNumber }}</td>
+                    <td><button type="button" class="btn btn-success" routerLink="/customer/update/{{customerDto.id}}" >Güncelle</button></td>
+                        <td><button type="button" class="btn btn-danger" (click)="delete(customerDto.id)">Sil</button></td>
+                  </tr>
+                </tbody>
+      
+              </table>
+  
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<div class="col-md-12">
+
+     <div class="alert alert-light mx-auto pb-auto bg-light" *ngIf="registerOrLogin=='login'" role="alert">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" (click)="selectLoginOrRegister('login')">Giriş Yap</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " aria-current="page"(click)="selectLoginOrRegister('register')">Üye Ol</a>          
+        </li>
+    </ul>    
+
+        <form class="m-4" [formGroup]="loginForm">
+            <div class="mb-3">
+                <div class="form-group">
+                    <input type="email" id="email" formControlName="email" class="form-control w-50"
+                        placeholder="Email" />
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <input type="password" id="password" formControlName="password" class="form-control w-50"
+                        placeholder="Parola" />
+                </div>
+            </div>
+        </form>
+    
+        <div class="mx-auto pb-auto" style="width:100px;">
+            <button class="btn btn-fill  btn-primary" (click)="login()" >Giriş Yap</button>
+        </div>
+    
+    </div>
+         
+    <div class="alert alert-light  mx-auto pb-auto bg-light " *ngIf="registerOrLogin=='register'"
+     role="alert">
+    
+     <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" style="color:darkslategray" (click)="selectLoginOrRegister('login')">Giriş Yap</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" style="color:darkslategray" aria-current="page"(click)="selectLoginOrRegister('register')">Üye Ol</a>          
+        </li>
+    </ul>
+
+                <form class="m-4" [formGroup]="registerForm" *ngIf="genders">
+                    <div class=" col-md-8 alert">
+                   
+                        <div class="row mb-3">
+                            <div class="col-auto ">
+                                <label for="userName">Ad</label>
+                                <div class="form-group"><input type="text" id="firstName" formControlName="firstName" class="form-control"
+                                        placeholder="Adı" />
+                                </div>
+                            </div>
+                            <div class="col-auto ">
+                                <label for="userName">Soyad</label>
+                                <div class="form-group"><input type="text" id="lastName" formControlName="lastName" class="form-control"
+                                        placeholder="Soyadı" />
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="row mb-3">
+                            <div class="col-auto ">
+                                <label for="userName">Tc Kimlik No</label>
+                                <div class="form-group"><input type="text" id="identityNumber" formControlName="identityNumber" class="form-control"
+                                        placeholder="Tc Kimlik No" />
+                                </div>
+                            </div> 
+                            <div class="col-auto ">
+                                <label for="userName">Telefon Numarası</label>
+                                <div class="form-group"><input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control"
+                                        placeholder="Telefon No" />
+                                </div>
+                            </div>                         
+                        </div>    
+                        <div class="row mb-3">
+                            <div class="col-auto ">
+                                <label for="mail">Mail</label>
+                                <div class="form-group"><input type="text" id="email" formControlName="email" class="form-control"
+                                        placeholder="Mail" />
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <label for="genderName">Cinsiyet</label>
+                                <select class="form-control" id="genderName" formControlName="genderName" style="width:120px;">
+                                    <option >Cinsiyet</option>
+                                    <option *ngFor="let gender of genders">{{gender.genderName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-auto ">
+                                <label for="password">Şifre</label>
+                                <div class="form-group"><input type="password" id="password" formControlName="password" class="form-control"
+                                        placeholder="Şifre" />
+                                </div>
+                            </div>
+                            <div class="col-auto ">
+                                <label for="passwordRepeat">Şifre</label>
+                                <div class="form-group"><input type="password" id="passwordRepeat" formControlName="passwordRepeat" class="form-control"
+                                        placeholder="Şifre" />
+                                </div>
+                            </div>
+                           
+                        </div>                              
+                        <div class="mx-auto pb-auto" style="width:100px;">
+                            <button class="btn btn-fill  btn-primary" (click)="register()" >Kayıt Ol</button>
+                        </div>
+                    </div>
+
+                </form>
+
+          
+           
+           
+    </div>
+    
+   
+
+</div>

@@ -1,0 +1,49 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5><a routerLink="/admin">Ana Ekran</a>-----Kullanıcı Güncelle</h5>
+        </div>
+        <div class="card-body">
+            <form class="" [formGroup]="userUpdateForm" *ngIf="userDto">
+                <div class=" col-md-8 alert">
+                   
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="email">Email</label>
+                            <div class="form-group"><input type="text" id="email" formControlName="email" class="form-control"
+                                    placeholder="Mail" />
+                            </div>
+                        </div>
+                    </div>        
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="firstName">Adı</label>
+                            <div class="form-group"><input type="text" id="firstName" formControlName="firstName" class="form-control"
+                                    placeholder="KullanıcıAdı" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="lastName">Soyadı</label>
+                            <div class="form-group"><input type="text" id="lastName" formControlName="lastName" class="form-control"
+                                    placeholder="lastName" />
+                            </div>
+                        </div>
+                    </div>             
+                    <div class="row mb-3">
+                        <div class="col-auto">
+                            <select class="form-control" id="operationClaimName" formControlName="operationClaimName" style="width:120px;">
+                                <option>Kullanıcı Rolü</option>
+                                <option *ngFor="let operationClaim of operationClaims">{{operationClaim.name}}</option>
+                            </select>                           
+                        </div>
+                    </div>
+                    <div class="mx-auto pb-auto" style="width:100px;">
+                        <button class="btn btn-fill  btn-primary" (click)="update()">Güncelle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

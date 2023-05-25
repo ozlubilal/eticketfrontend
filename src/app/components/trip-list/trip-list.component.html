@@ -1,0 +1,42 @@
+<div class="content">
+    <div class="col-md-12 mx-auto">    
+      <div class="card ">
+        <div class="card-header"><h5><a routerLink="/admin">Ana Ekran</a>-----Sefer Listesi</h5></div>
+          <div class="listCenter">
+           
+              <table class="table table-striped " *ngIf="dataLoaded==true">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Başlangıç</th>
+                      <th>Varış</th>  
+                      <th>Koltuk Sayısı</th>  
+                      <th>Tarih</th>
+                      <th>Saat</th>
+                      <th>Fiyat</th>                
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let tripDto of tripDtos;let i = index" [attr.data-index]="i">
+                      <td>{{i+1}}</td>
+                      <td>{{ tripDto.startTownName }}</td>
+                      <td>{{ tripDto.finishTownName }}</td>
+                      <td>{{ tripDto.numberOfSeats }}</td>
+                      <td>{{ tripDto.date | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{ tripDto.hour| slice:0:5  }}</td>
+                      <td>{{ tripDto.price }}</td>
+                      <td><button type="button" class="btn btn-success" routerLink="/trip/update/{{tripDto.id}}" >Güncelle</button></td>
+                          <td><button type="button" class="btn btn-danger" (click)="delete(tripDto.id)">Sil</button></td>
+                    </tr>
+                  </tbody>
+        
+                </table>
+    
+  
+              </div>
+          </div>
+      </div>
+  </div>

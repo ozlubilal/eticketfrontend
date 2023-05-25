@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5><a routerLink="/admin">Ana Ekran</a>-----İlçe Güncelle</h5>
+        </div>
+        <div class="card-body">
+            <form class="" [formGroup]="townUpdateForm" *ngIf="city">
+                <div class=" col-md-8 alert">
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="cityName">İl:</label>
+                           {{city.cityName}}
+                        </div>
+                    </div>  
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="roleName">İlçe Adı</label>
+                            <div class="form-group"><input type="text" id="townName" formControlName="townName" class="form-control"
+                                    placeholder="ilçe Adı" />
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="mx-auto pb-auto" style="width:100px;">
+                        <button class="btn btn-fill  btn-primary" (click)="update()">Güncelle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

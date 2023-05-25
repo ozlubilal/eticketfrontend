@@ -1,0 +1,50 @@
+<div class="content">
+    <div class="col-md-12 mx-auto">    
+      <div class="card ">
+        <div class="card-header"><h5><a routerLink="/admin">Ana Ekran</a>-----Bilet Listesi</h5></div>
+          <div class="listCenter">
+           
+              <table class="table table-striped " *ngIf="dataLoaded==true">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Tc No</th>
+                      <th>Adı</th>
+                      <th>Soyadı</th>
+                      <th>Cinsiyet</th> 
+                      <th>Telefon No</th>   
+                      <th>Koltuk No</th>                  
+                      <th>Nereden</th> 
+                      <th>Nereye</th> 
+                      <th>Tarih</th> 
+                      <th>Saat</th> 
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ticketDto of ticketDtos;let i = index" [attr.data-index]="i">
+                      <td>{{i+1}}</td>
+                      <td>{{ ticketDto.identityNumber }}</td>
+                      <td>{{ ticketDto.firstName }}</td>
+                      <td>{{ ticketDto.lastName }}</td>
+                      <td>{{ ticketDto.genderName }}</td>
+                      <td>{{ ticketDto.phoneNumber }}</td>
+                      <td>{{ ticketDto.seatNumber }}</td>
+                      <td>{{ ticketDto.startTownName }}</td>
+                      <td>{{ ticketDto.finishTownName }}</td>
+                      <td>{{ ticketDto.date |date:'dd/mm/yyyy' }}</td>                      
+                      <td>{{ ticketDto.hour| slice:0:5}}</td>
+                      <td><button type="button" class="btn btn-success" routerLink="/ticket/update/{{ticketDto.id}}" >Güncelle</button></td>
+                          <td><button type="button" class="btn btn-danger" (click)="delete(ticketDto.id)">Sil</button></td>
+                    </tr>
+                  </tbody>
+        
+                </table>
+    
+  
+              </div>
+          </div>
+      </div>
+  </div>

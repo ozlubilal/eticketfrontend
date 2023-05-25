@@ -1,0 +1,107 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header" *ngIf="tripDtos&&!price">
+            Sefer Seçimi
+            <div class="col-md-2 float-end ">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="returnToHome()">Rota Seçimine Geri Dön</button>
+            </div>
+        </div>
+        <div class="card-header"  *ngIf="price">
+                {{tripDto.startTownName+'---'+tripDto.finishTownName+' ------------'}} {{tripDto.date | date: 'dd/MM/yyyy'}} {{'---'+tripDto.hour}}
+                <div class="col-md-2 float-end " *ngIf="price"><button type="button" class="btn btn-secondary btn-sm" (click)="returnSelectTrip()">Sefer
+                    seçimine
+                    geri dön</button>
+            </div>
+        </div>
+        <div class="card-body">          
+           
+                <div class="  alert">
+                    <div class="ms-5 mt-2" *ngIf="price">
+                        <app-select-seat [price]="price" [tripDto]="tripDto" [busTypeId]="busTypeId" [bookedSeats]="bookedSeats"></app-select-seat>
+                    </div>
+                    <form class="" [formGroup]="selectRouteForm">
+                        <!-- şehir ve tarih seçimi -->
+                        <div class="row mb-3" *ngIf="cities&&!tripDtos">
+                            <div class="card col-auto">
+                                <div class="card-header">
+                                    Nereden
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">il</h5>
+                                    <select class="form-control" id="city" formControlName="startCity"
+                                        (ngModelChange)="getStartTownsByCity($event)" [(ngModel)]="startCityId">
+                                        <option *ngFor="let city of cities" value={{city.id}}>
+                                            {{city.cityName}}</option>
+                                    </select>
+                                    <h5 class="card-title" *ngIf="startTowns">ilçe</h5>
+                                    <select class="form-control" id="city" formControlName="startTown" *ngIf="startTowns">
+                                        <option *ngFor="let startTown of startTowns" value={{startTown.id}}>
+                                            {{startTown.townName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card col-auto">
+                                <div class="card-header">
+                                    Nereye
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">il</h5>
+                                    <select class="form-control" id="city" formControlName="finishCity"
+                                        (ngModelChange)="getFinishTownsByCity($event)" [(ngModel)]="finishCityId">
+                                        <option *ngFor="let city of cities" value={{city.id}}>
+                                            {{city.cityName}}</option>
+                                    </select>
+                                    <h5 class="card-title" *ngIf="finishTowns">ilçe</h5>
+                                    <select class="form-control" id="city" formControlName="finishTown" *ngIf="finishTowns">
+                                        <option *ngFor="let finishTown of finishTowns" value={{finishTown.id}}>
+                                            {{finishTown.townName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <label for="date">Tarih</label>
+                                <input type="date" id="date" formControlName="date" class="form-control  " />
+                                <div class="mt-5 float-end">
+                                    <button class="btn btn-fill  btn-primary" (click)="getTrips()">Seferleri Listele</button>
+                                </div>
+                            </div>
+                
+                        </div>
+                        <!-- seferler listeleniyor -->
+                        <div class="" *ngIf="tripDtos&&!price">
+                            <table class="table table-striped ">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Başlangıç</th>
+                                        <th>Varış</th>
+                                        <th>Koltuk Sayısı</th>
+                                        <th>Saat</th>
+                                        <th>Fiyat</th>
+                                        <th></th>
+                
+                
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tripDto of tripDtos;let i = index" [attr.data-index]="i">
+                                        <td>{{i+1}}</td>
+                                        <td>{{ tripDto.startTownName }}</td>
+                                        <td>{{ tripDto.finishTownName }}</td>
+                                        <td>{{ tripDto.numberOfSeats }}</td>
+                                        <td>{{ tripDto.hour }}</td>
+                                        <td>{{ tripDto.price }}</td>
+                                        <td><button type="button" class="btn   btn-success" (click)="selectTrip(tripDto)">Seç</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                
+                
+                        </div>
+                    </form>
+                </div>
+            
+        </div>
+    </div>
+</div>

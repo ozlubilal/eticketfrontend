@@ -1,0 +1,32 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5><a routerLink="/admin">Ana Ekran</a>-----Otobüs Türü Ekle</h5>
+        </div>
+        <div class="card-body">
+            <form class="" [formGroup]="busTypeAddForm">
+                <div class=" col-md-8 alert">
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="busTypeName">Otobüs Türü Adı</label>
+                            <div class="form-group"><input type="text" id="busTypeName" formControlName="busTypeName" class="form-control"
+                                    placeholder="Otobüs Türü Adı" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="numberOfSeats">Koltuk Sayısı</label>
+                            <div class="form-group"><input type="text" id="numberOfSeats" formControlName="numberOfSeats" class="form-control"
+                                    placeholder="Otobüs Türü Adı" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mx-auto pb-auto" style="width:100px;">
+                        <button class="btn btn-fill  btn-primary" (click)="add()">Ekle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5><a routerLink="/admin">Ana Ekran</a>-----Şehir Ekle</h5>
+        </div>
+        <div class="card-body">
+            <form class="" [formGroup]="routeAddForm">
+                <div class=" col-md-8 alert">
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="startTownName">Başlangıç Durağı</label>
+                            <select class="form-control" id="startTownName" formControlName="startTownName" style="width:120px;">
+                                <option>Varış Durağı</option>
+                                <option *ngFor="let town of towns">{{town.townName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="finishTownName">Varış Durağı</label>                           
+                            <select class="form-control" id="finishTownName" formControlName="finishTownName" style="width:120px;">
+                                <option>Varış Durağı</option>
+                                <option *ngFor="let town of towns">{{town.townName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-auto ">
+                            <label for="cityName">Mesafe</label>
+                            <div class="form-group"><input type="text" id="distance" formControlName="distance" class="form-control"
+                                    placeholder="Mesafe" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mx-auto pb-auto" style="width:100px;">
+                        <button class="btn btn-fill  btn-primary" (click)="add()">Ekle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
